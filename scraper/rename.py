@@ -1,6 +1,6 @@
 import os
 
-from scraper.io import get_data, get_files, filter_persons
+from scraper.io import filter_persons, get_data, get_files
 
 
 def run(directory, names_source):
@@ -11,13 +11,13 @@ def run(directory, names_source):
     return directory
 
 
-def rename(filenames, persons):
-    
+def rename(filenames, persons):  # noqa: WPS231
+
     for file in filenames:
-        for person in persons:
+        for person, info in persons.items():
             if file['last_name'] in person:
-                person_id = persons[person].get('person_id')
-                section_id = persons[person].get('section_id')
+                person_id = info.get('person_id')
+                section_id = info.get('section_id')
 
                 if person_id and person_id != 'NULL':
                     new_name = person_id
@@ -28,7 +28,7 @@ def rename(filenames, persons):
                 file['new_path'] = new_path
 
     return filenames
-    
+
 
 def _change_path(old_path, new_name):
     parent_dir = os.path.abspath(os.path.join(old_path, os.pardir))

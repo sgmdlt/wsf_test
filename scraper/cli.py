@@ -1,11 +1,10 @@
 import argparse
 
-from scraper.loader import DEFAULT_URL
 
 def get_args():
     parser = argparse.ArgumentParser(
         prog='minobr photo scraper',
-        description='Download photos of employes from site of ministry of education',
+        description='Download photos of employes from ministry of education site',  # noqa: E501
         usage='scraper <table>',
     )
     parser.add_argument(

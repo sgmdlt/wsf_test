@@ -1,12 +1,13 @@
 import csv
 import os
 
+
 def get_files(directory):
     files = os.listdir(directory)
     return [
         {
-            'filename': name, 
-            'path': _path(name, directory), 
+            'filename': name,
+            'path': _path(name, directory),
             'last_name': _prepare(name),
         }
         for name in files
@@ -20,19 +21,18 @@ def _path(name, directory):
 
 
 def _prepare(filename):
-    first_part, *_ = filename.split('-')
-    return first_part
+    return filename.split('-')[0]
 
 
 def get_data(file):
-    with open(file, 'r', newline='') as file:
-        reader = csv.DictReader(file)
-        return [row for row in reader]
+    with open(file, 'r', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        return list(reader)
 
 
 def filter_persons(data):
     persons = {}
-    
+
     for row in data:
         name = row['person_name']
         info = {

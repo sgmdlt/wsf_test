@@ -1,9 +1,7 @@
 import logging
-import os
-from random import random, sample
 import string
 import traceback
-from urllib.parse import urlparse
+from random import sample
 
 from scraper.exceptions import FileSystemError
 
@@ -21,7 +19,7 @@ def _generate(name):
     name = name.strip()
     if name:
         return name.replace('/', '-').replace(' ', '-')
-    return 'noname_{}'.format(_random_name())
+    return 'noname_{0}'.format(_random_name())
 
 
 def _random_name():
