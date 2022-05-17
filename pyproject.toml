@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "minobr_scrap"
+version = "0.1.0"
+description = ""
+authors = ["none"]
+packages = [
+    { include = "scraper" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+bs4 = "^0.0.1"
+requests = "^2.27.1"
+
+[tool.poetry.dev-dependencies]
+wemake-python-styleguide = "^0.16.1"
+pytest = "^7.1.2"
+charset-normalizer = "^2.0.12"
+ipython = "^8.3.0"
+chardet = "^4.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+scraper = 'scraper.scripts.main:main'
