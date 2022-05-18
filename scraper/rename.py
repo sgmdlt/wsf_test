@@ -1,6 +1,9 @@
+import logging
 import os
 
 from scraper.io import filter_persons, get_data, get_files
+
+logger = logging.getLogger(__name__)
 
 
 def run(directory, names_source):
@@ -41,3 +44,4 @@ def rewrite(files):
         new_path = file.get('new_path')
         if new_path:
             os.rename(old_path, '{0}.jpg'.format(new_path))
+            logger.info('File {0} was renamed to {1}'.format(old_path, new_path))
