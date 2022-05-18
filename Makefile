@@ -11,3 +11,6 @@ check: test lint
 
 run:
 	poetry run scraper
+
+test-coverage:
+	poetry run pytest --cov=scraper --cov-report xml
