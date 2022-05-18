@@ -1,4 +1,6 @@
 [![Python CI](https://github.com/sgmdlt/wsf_test/actions/workflows/main.yml/badge.svg)](https://github.com/sgmdlt/wsf_test/actions/workflows/main.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/133b6c9cc2b4369b3667/maintainability)](https://codeclimate.com/github/sgmdlt/wsf_test/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/133b6c9cc2b4369b3667/test_coverage)](https://codeclimate.com/github/sgmdlt/wsf_test/test_coverage)
 
 ## minobr scrapper
 
