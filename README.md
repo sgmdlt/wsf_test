@@ -30,5 +30,5 @@ positional arguments:
 options:
   -h, --help  show this help message and exit
 
-$ scraper ./names_list
+$ scraper ./minobr_scrape_list.csv
 ```
