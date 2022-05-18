@@ -1,7 +1,7 @@
-from concurrent import futures
 import logging
 import os
 import traceback
+from concurrent import futures
 
 import requests
 from scraper import html
@@ -32,13 +32,13 @@ def loader(url, directory):
     return dir_path
 
 
-def download_images(urls, dir_path):
+def download_images(urls, dir_path):  # noqa: WPS210
     images = []
     with futures.ThreadPoolExecutor(max_workers=8) as executor:
         tasks = [(executor.submit(get_content, url), url) for url in urls]
         result = [(task.result(), url) for task, url in tasks]
-        logging.info(f"All adresses was scanned")
-    
+        logging.info('All adresses was scanned')
+
     for page, url in result:
         for title, image_url in html.get_images(page):
             full_url = html.make_full_url(url, image_url)
@@ -46,16 +46,19 @@ def download_images(urls, dir_path):
         logger.info(images)
 
     with futures.ThreadPoolExecutor(max_workers=8) as executor:
-        tasks = [executor.submit(get_and_save_image, title, url, dir_path) for title, url in images]    
-        result = [task.result() for task in tasks]
-        logging.info(f"All photos was downloaded")
-    
+        tasks = [
+            executor.submit(get_and_save_image, title, url, dir_path)
+            for title, url in images
+        ]
+        [task.result() for task in tasks]
+        logging.info('All photos was downloaded')
 
-def get_and_save_image(title, url, dir_path): 
+
+def get_and_save_image(title, url, dir_path):
     image = get_content(url)
     local_path = os.path.join(dir_path, local_name(title))
     logger.info('Image path - {0}'.format(local_path))
-    save(image, local_path, 'wb')
+    return save(image, local_path, 'wb')
 
 
 def get_content(url):

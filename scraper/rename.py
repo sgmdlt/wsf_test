@@ -44,4 +44,4 @@ def rewrite(files):
         new_path = file.get('new_path')
         if new_path:
             os.rename(old_path, '{0}.jpg'.format(new_path))
-            logger.info('File {0} was renamed to {1}'.format(old_path, new_path))
+            logger.info('File {0} was renamed to {1}'.format(old_path, new_path))  # noqa: E501
